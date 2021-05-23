@@ -1,0 +1,22 @@
+Implementing Server Side Validation
+-----------------------------------
+
+1. Command Bean or Form Backing Bean 
+(Instead of passing specific requestParam, pass model i.e Todo todo)
+-------
+Enabled Double Binding
+BEan -> Form 
+Form -> Bean
+
+2. Add Validation
+-----------------
+Bean Validation API - Model change @size above data value
+Use validation on Controller - @Valid 
+Display errors in view
+
+
+Command Bean
+~~~~~~~~~~~~
+Controller - implement it inn controller
+View- Spring Form Tags (Just like we have jstl)
+Spring MVC provides Spring Form Tags so that both side binding can be done
