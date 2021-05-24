@@ -2,8 +2,7 @@
 <%@ include file="common/navigation.jspf"%>
 
 <div class="container">
-	Welcome to my page ${name}! <br> <a href="/list-todos">Click
-		Here to Manage Your TODOS</a>
+	An Exception Occurred, please contact Support.
 </div>
 
 <%@ include file="common/footer.jspf"%>

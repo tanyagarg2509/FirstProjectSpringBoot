@@ -38,16 +38,21 @@ public class TodoController {
 	
 	@RequestMapping(value = "/list-todos", method = RequestMethod.GET) 
 	public String showTodos(ModelMap model) {
-		String name = (String) model.get("name");
+		String name = getLoggedinUserName(model);
 		model.put("todos", service.retrieveTodos(name));
 		return "list-todos";
+	}
+
+	// refactor alt+shift+M
+	private String getLoggedinUserName(ModelMap model) {
+		return (String) model.get("name");
 	}
 
 	
 	
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
 	public String addTodo(ModelMap model) {
-		model.put("todo", new Todo(0, (String) model.get("name"), "", new Date(), false));
+		model.put("todo", new Todo(0, getLoggedinUserName(model), "", new Date(), false));
 		return "add-todo";
 	}
 	/* Using Command Bean */
@@ -56,13 +61,15 @@ public class TodoController {
 		if (result.hasErrors()) {
 			return "add-todo";
 		}
-		service.addTodo((String) model.get("name"), todo.getDesc(),todo.getTargetDate(), false);
+		service.addTodo(getLoggedinUserName(model), todo.getDesc(),todo.getTargetDate(), false);
 		return "redirect:/list-todos";
 	}
 
 	
 	@RequestMapping(value = "/delete-todo", method = RequestMethod.GET) 
 	public String deleteTodo(@RequestParam int id) {
+		if(id==1) throw new RuntimeException("somwthing gadbadd");// whitelabel error with above mssg
+		
 		service.deleteTodo(id);
 		return "redirect:/list-todos";
 	}
@@ -81,7 +88,7 @@ public class TodoController {
 			return "add-todo";
 		}
 		
-		todo.setUser((String) model.get("name"));
+		todo.setUser(getLoggedinUserName(model));
 		service.updateTodo(todo);	
 		
 		return "redirect:/list-todos";

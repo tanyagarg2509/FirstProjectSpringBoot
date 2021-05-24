@@ -1,15 +1,19 @@
-<html> 
-<head><title>Web Application</title></head>
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
 
-<body>
+<div class="container">
+	<span style="color: red"><h6>${errorMessage}</h6></span>
+	<form  method="POST">
+		<fieldset class="form-group">
+			<label>Name:</label> 
+			<input class="form-control" type="text" name="name" />
+		</fieldset>
+		<fieldset class="form-group">
+			<label>Password:</label> 
+			<input  class="form-control" type="password" name="pswd" />
+		</fieldset>
+		<input type="submit" name="submit">
+	</form>
+</div>
 
-<span style="color:red"><h2> ${errorMessage} </h2></span>
-<form method="POST">
-	Name: <input type="text" name="name"/>
-	<br>
-	Password: <input type="password" name = "pswd"/>
-	<br>
-	<input type="submit" name="submit"> 
-</form>
-</body
-</html>
+<%@ include file="common/footer.jspf"%>
