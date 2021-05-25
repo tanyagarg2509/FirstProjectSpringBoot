@@ -20,3 +20,4 @@ Command Bean
 Controller - implement it inn controller
 View- Spring Form Tags (Just like we have jstl)
 Spring MVC provides Spring Form Tags so that both side binding can be done
+
